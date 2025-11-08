@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone code from repository') {
+            steps {
+                sh 'https://github.com/mikhail-kh1988/dev-ops-std.git'
+            }
+        }
+        stage('Build-Gradle'){
+            steps{
+                dir('ms-itsm-service'){
+                    dir('ms-user-service-managment'){
+                        sh 'gradle build'
+                    }
+                }
+            }
+        }
+        /*stage('Buld gradle'){
+            steps{
+                sh './ms-itsm-service/ms-user-service-managment/gradle build'
+            }
+        }*/
+
+    }
+}
